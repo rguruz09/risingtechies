@@ -3,6 +3,8 @@
     package="com.risingtechies.intuithack.intuithack">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+
 
     <application
         android:allowBackup="true"

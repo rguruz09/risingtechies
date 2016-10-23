@@ -3,16 +3,16 @@ var mysql = require('mysql');
 
 function getConnection(){
 	var connection = mysql.createConnection({
-		host : 'hackathon.crilghgxvjhm.us-west-2.rds.amazonaws.com',
-		port : 3306 , 
-		user : 'rising6',
-		password : 'risinginternationals',
-		database : 'risinginternationals' 
+		// host : 'hackathon.crilghgxvjhm.us-west-2.rds.amazonaws.com',
+		// port : 3306 , 
+		// user : 'rising6',
+		// password : 'risinginternationals',
+		// database : 'risinginternationals' 
 		
-		// host : '54.201.49.112',
-		// user : 'root',
-		// password : '6stars',
-		// database : 'risinginternational' 
+		 host : 'localhost',
+		 user : 'raghu',
+		 password : 'raghu',
+		 database : 'rising' 
 	});
 	return connection ;
 }
