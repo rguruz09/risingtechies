@@ -25,9 +25,10 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support:design:24.2.1'
     compile 'com.squareup.sdk:register-sdk:1.1'
-    compile 'ai.api:sdk:1.10.0@aar'
+
     // api.ai SDK dependencies
     compile 'com.google.code.gson:gson:2.3'
     compile 'commons-io:commons-io:2.4'
     compile 'ai.api:sdk:1.10.0@aar'
+
 }

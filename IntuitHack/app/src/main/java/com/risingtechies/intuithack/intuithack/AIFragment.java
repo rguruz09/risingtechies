@@ -82,7 +82,7 @@ public class AIFragment extends ListFragment implements AIListener{
         resultTextView.setText("Query:" + result.getResolvedQuery() +
                 "\nAction: " + result.getAction() +
                 "\nParameters: " + parameterString);
-        
+
     }
 
     @Override
