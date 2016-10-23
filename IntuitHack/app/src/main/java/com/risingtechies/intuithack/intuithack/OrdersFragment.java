@@ -3,6 +3,8 @@ package com.risingtechies.intuithack.intuithack;
 import android.app.Fragment;
 import android.app.ListFragment;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -11,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.graphics.Typeface;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -87,8 +90,14 @@ public class OrdersFragment extends ListFragment {
 
             TextView customerName = (TextView) convertView.findViewById(R.id.customerName);
             customerName.setText(ordersListInfo.getCustomerName());
+            //customerName.setTypeFace(Typeface.SANS_SERIF);
+            customerName.setTextColor(Color.BLACK);
+            customerName.setTextSize(20);
+
             TextView date = (TextView) convertView.findViewById(R.id.date);
+            date.setTextColor(Color.BLACK);
             TextView time = (TextView) convertView.findViewById(R.id.time);
+            time.setTextColor(Color.BLACK);
             Date oDate = ordersListInfo.getOrderDate();
             DateFormat dateInstance = SimpleDateFormat.getDateInstance();
             String date1 = dateInstance.format(oDate);
@@ -99,6 +108,7 @@ public class OrdersFragment extends ListFragment {
             time.setText("Time: " +date2);
             TextView price = (TextView)convertView.findViewById(R.id.price);
             price.setText(String.valueOf("$"+ ordersListInfo.getPrice()));
+            price.setTextColor(Color.BLACK);
 
             return convertView;
         }

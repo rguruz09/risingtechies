@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,7 +23,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.squareup.sdk.register.ChargeRequest;
@@ -100,11 +103,22 @@ public class SingleOrderDetailFragment extends ListFragment{
             }
         }
 
+
+//        RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams)socustomername.getLayoutParams();
+        //params.setMargins(5,5,5,5);
+
         name = oli.getCustomerName();
         View v = inflater.inflate(R.layout.single_order_fragment, parent, false);
         socustomername = (TextView)v.findViewById(R.id.socustomername);
+        RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams)socustomername.getLayoutParams();
+        lp.setMargins(20,10,10,10);
         socustomername.setText("Customer: " +oli.getCustomerName());
+        socustomername.setTextColor(Color.BLACK);
+//        socustomername.setLayoutParams(params);
         sodate = (TextView)v.findViewById(R.id.sodate);
+        RelativeLayout.LayoutParams lp1 = (RelativeLayout.LayoutParams)sodate.getLayoutParams();
+        lp1.setMargins(20,5,5,5);
+        sodate.setTextColor(Color.BLACK);
         Date oDate = oli.getOrderDate();
         DateFormat dateInstance = SimpleDateFormat.getDateInstance();
         String date1 = dateInstance.format(oDate);
@@ -113,8 +127,13 @@ public class SingleOrderDetailFragment extends ListFragment{
         sodate.setText("Ordered On: " +date1);
         sotime = (TextView)v.findViewById(R.id.sotime);
         sotime.setText("Time: " +date2);
+        sotime.setTextColor(Color.BLACK);
+        sodate = (TextView)v.findViewById(R.id.sodate);
+        RelativeLayout.LayoutParams lp2 = (RelativeLayout.LayoutParams)sotime.getLayoutParams();
+        lp2.setMargins(20,5,5,5);
         totalcost = (TextView)v.findViewById(R.id.totalcost);
         totalcost.setText("Total Cost: "+ String.valueOf(amount));
+        totalcost.setTextColor(Color.BLACK);
 
         ListView lv = (ListView)v.findViewById(android.R.id.list);
 
@@ -195,12 +214,21 @@ public class SingleOrderDetailFragment extends ListFragment{
             new UrlActivity2().execute(convertView, singleOrderCartInfo.getItemurl());
             TextView productName = (TextView) convertView.findViewById(R.id.productName);
             productName.setText(singleOrderCartInfo.getItemName());
+            RelativeLayout.LayoutParams lp3 = (RelativeLayout.LayoutParams)productName.getLayoutParams();
+            lp3.setMargins(20,5,5,5);
+            productName.setTextSize(20);
             TextView quantity = (TextView) convertView.findViewById(R.id.quantity);
             String qty = "Quantity: " + Integer.toString(singleOrderCartInfo.getItemQty());
             quantity.setText(qty);
+            quantity.setTextSize(15);
+            RelativeLayout.LayoutParams lp4 = (RelativeLayout.LayoutParams)quantity.getLayoutParams();
+            lp4.setMargins(20,5,5,5);
             TextView cost = (TextView) convertView.findViewById(R.id.cost);
             String cst = "$"+Double.toString(singleOrderCartInfo.getCost());
             cost.setText(cst);
+            RelativeLayout.LayoutParams lp5 = (RelativeLayout.LayoutParams)quantity.getLayoutParams();
+            lp5.setMargins(20,5,10,15);
+            cost.setTextSize(20);
             return convertView;
         }
 
