@@ -10,10 +10,12 @@ public class OrdersListInfo {
     private int id;
     private String customerName;
     private Date orderDate;
+    private double price;
 
-    public OrdersListInfo(String customerName, Date orderDate) {
+    public OrdersListInfo(String customerName, Date orderDate, double price) {
         this.customerName = customerName;
         this.orderDate = orderDate;
+        this.price = price;
     }
 
     public int getId() {
@@ -38,5 +40,13 @@ public class OrdersListInfo {
 
     public void setOrderDate(Date orderDate) {
         this.orderDate = orderDate;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

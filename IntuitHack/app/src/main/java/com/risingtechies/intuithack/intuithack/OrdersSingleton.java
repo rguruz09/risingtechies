@@ -18,10 +18,10 @@ public class OrdersSingleton {
         mAppContext = appContext;
         ordersListInfos = new ArrayList<OrdersListInfo>();
 
-        OrdersListInfo order1 = new OrdersListInfo("Rekha", new Date());
-        OrdersListInfo order2 = new OrdersListInfo("Sanjeedha", new Date());
-        OrdersListInfo order3 = new OrdersListInfo("Raghu", new Date());
-        OrdersListInfo order4 = new OrdersListInfo("Vinay", new Date());
+        OrdersListInfo order1 = new OrdersListInfo("Rekha", new Date(),123.2);
+        OrdersListInfo order2 = new OrdersListInfo("Sanjeedha", new Date(), 70.0);
+        OrdersListInfo order3 = new OrdersListInfo("Raghu", new Date(), 83.45);
+        OrdersListInfo order4 = new OrdersListInfo("Vinay", new Date(), 120.0);
 
         ordersListInfos.add(order1);
         ordersListInfos.add(order2);

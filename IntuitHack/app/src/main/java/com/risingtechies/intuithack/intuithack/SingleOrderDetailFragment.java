@@ -9,10 +9,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -21,7 +23,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+
+import javax.net.ssl.HttpsURLConnection;
 
 /**
  * Created by Rekha on 10/22/2016.
@@ -34,8 +41,11 @@ public class SingleOrderDetailFragment extends ListFragment{
     private TextView socustomername;
     private TextView soorderid;
     private TextView sodate;
+    private TextView sotime;
     private TextView totalcost;
     private ListView lv;
+    private Button proceed;
+    private Button cancel;
     private static int id;
     private ArrayList<SingleOrderCartInfo> sod;
     private OrdersListInfo oli;
@@ -59,14 +69,6 @@ public class SingleOrderDetailFragment extends ListFragment{
         setListAdapter(adapter);
     }
 
-    /*public static ListFragment newInstance(int id) {
-        Bundle args = new Bundle();
-        args.putSerializable(EXTRA_ID, id);
-        SingleOrderDetailFragment fragment = new SingleOrderDetailFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }*/
-
     @TargetApi(11)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent,
@@ -81,19 +83,37 @@ public class SingleOrderDetailFragment extends ListFragment{
 
         View v = inflater.inflate(R.layout.single_order_fragment, parent, false);
         socustomername = (TextView)v.findViewById(R.id.socustomername);
-        socustomername.setText(oli.getCustomerName());
-        soorderid = (TextView)v.findViewById(R.id.soorderid);
-        soorderid.setText(String.valueOf(oli.getId()));
+        socustomername.setText("Customer: " +oli.getCustomerName());
         sodate = (TextView)v.findViewById(R.id.sodate);
-        sodate.setText(oli.getOrderDate().toString());
-
+        Date oDate = oli.getOrderDate();
+        DateFormat dateInstance = SimpleDateFormat.getDateInstance();
+        String date1 = dateInstance.format(oDate);
+        DateFormat timeInstance = SimpleDateFormat.getTimeInstance();
+        String date2 = timeInstance.format(oDate);
+        sodate.setText("Ordered On: " +date1);
+        sotime = (TextView)v.findViewById(R.id.sotime);
+        sotime.setText("Time: " +date2);
         totalcost = (TextView)v.findViewById(R.id.totalcost);
-        totalcost.setText(String.valueOf(amount));
+        totalcost.setText("Total Cost: "+ String.valueOf(amount));
 
         ListView lv = (ListView)v.findViewById(android.R.id.list);
 
+        proceed = (Button)v.findViewById(R.id.proceedbtn);
+        cancel = (Button)v.findViewById(R.id.cancelbtn);
+
+        proceed.setOnClickListener(new View.OnClickListener() {
+            public void onClick(final View v)
+            {
+                try {
 
 
+
+                }catch (Exception e){
+                    Log.e("API_CALL", e.getLocalizedMessage());
+                }
+
+            }
+        });
 
         return v;
     }
@@ -150,9 +170,11 @@ public class SingleOrderDetailFragment extends ListFragment{
             TextView productName = (TextView) convertView.findViewById(R.id.productName);
             productName.setText(singleOrderCartInfo.getItemName());
             TextView quantity = (TextView) convertView.findViewById(R.id.quantity);
-            quantity.setText(Double.toString(singleOrderCartInfo.getItemQty()));
+            String qty = "Quantity: " + Integer.toString(singleOrderCartInfo.getItemQty());
+            quantity.setText(qty);
             TextView cost = (TextView) convertView.findViewById(R.id.cost);
-            cost.setText(Double.toString(singleOrderCartInfo.getCost()));
+            String cst = "$"+Double.toString(singleOrderCartInfo.getCost());
+            cost.setText(cst);
             return convertView;
         }
 
@@ -165,16 +187,23 @@ public class SingleOrderDetailFragment extends ListFragment{
                 myview = (View) parameters[0];
                 try {
 
-                    for (int i = 0; i < 2; i++) {
                         String url1 = (String) parameters[1];
                         URL url = new URL(url1);
-                        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                       /* HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
                         connection.setDoInput(true);
                         connection.connect();
                         InputStream input = connection.getInputStream();
-                        mybitmaprating = BitmapFactory.decodeStream(input);
+                        mybitmaprating = BitmapFactory.decodeStream(input);*/
 
-                    }
+                        try {
+                            InputStream in = new java.net.URL(url1).openStream();
+                            mybitmaprating = BitmapFactory.decodeStream(in);
+                        } catch (Exception e) {
+                            Log.e("Error", e.getMessage());
+                            e.printStackTrace();
+                        }
+
+
                     return mybitmaprating;
                 } catch (IOException e) {
                     // Log exception

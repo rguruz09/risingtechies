@@ -16,8 +16,8 @@ public class SingleOrderCartInfo {
     private double cost;
     private double totalCost;
 
-    public SingleOrderCartInfo(String itemurl, String itemName, int itemQty, double cost, double totalCost) {
-        this.itemurl = itemurl;
+    public SingleOrderCartInfo(String itemName, String itemUrl, int itemQty, double cost, double totalCost) {
+        this.itemurl = itemUrl;
         this.itemName = itemName;
         this.itemQty = itemQty;
         this.cost = cost;

@@ -1,78 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/socustomername"
-        android:textSize="@dimen/abc_dialog_padding_material"
-        android:textIsSelectable="false"
-        android:enabled="false"
-        android:textColor="#2951e4"
-        android:textStyle="bold"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+    <LinearLayout
+        android:gravity="center|center_vertical"
+        android:orientation="vertical"
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/soorderid"
-        android:textSize="@dimen/abc_dialog_padding_material"
-        android:textIsSelectable="false"
-        android:enabled="false"
-        android:textColor="#2951e4"
-        android:textStyle="bold"
-        android:layout_below= "@+id/socustomername"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/sodate"
-        android:textSize="@dimen/abc_dialog_padding_material"
-        android:textIsSelectable="false"
-        android:enabled="false"
-        android:textColor="#2951e4"
-        android:textStyle="bold"
-        android:layout_below= "@+id/soorderid"/>
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/female"
+                android:id="@+id/profileicon"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:padding="1dp"
+                android:cropToPadding="true"
+                android:scaleType="centerCrop"
+                android:background="#000000" />
 
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@android:id/list"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/socustomername"
+                android:textSize="@dimen/abc_dialog_padding_material"
+                android:textIsSelectable="false"
+                android:enabled="false"
+                android:textColor="#f44277"
+                android:textStyle="bold"
+                android:layout_toRightOf="@id/profileicon" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/totalcost"
-        android:textSize="@dimen/abc_dialog_padding_material"
-        android:textIsSelectable="false"
-        android:enabled="false"
-        android:textColor="#2951e4"
-        android:textStyle="bold"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_above="@+id/proceedbtn"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/sodate"
+                android:textSize="@dimen/activity_vertical_margin"
+                android:textIsSelectable="false"
+                android:enabled="false"
+                android:textColor="#2951e4"
+                android:textStyle="bold"
+                android:layout_toRightOf="@id/profileicon"
+                android:layout_below="@id/socustomername"/>
 
-    <Button
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:id="@+id/proceedbtn"
-        android:text="Proceed"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/sotime"
+                android:textSize="@dimen/activity_vertical_margin"
+                android:textIsSelectable="false"
+                android:enabled="false"
+                android:textColor="#f44277"
+                android:textStyle="bold"
+                android:layout_toRightOf="@id/profileicon"
+                android:layout_below="@id/sodate"/>
 
-    <Button
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="Cancel"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"/>
+            <TextView
+                android:paddingTop="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/itemsplaced"
+                android:textSize="@dimen/abc_dialog_padding_material"
+                android:textIsSelectable="false"
+                android:enabled="false"
+                android:textColor="#2951e4"
+                android:textStyle="bold"
+                android:text="Shopping Cart:"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:layout_below="@id/sotime"/>
 
-</RelativeLayout>
+        </RelativeLayout>
+
+
+        <ListView
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:id="@android:id/list"
+            android:layout_weight="1"
+            android:divider="#FFCC00"
+            android:dividerHeight="2dp"
+            android:gravity="center_horizontal" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center|center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/totalcost"
+                android:textSize="@dimen/activity_vertical_margin"
+                android:textIsSelectable="false"
+                android:enabled="false"
+                android:textColor="#f44277"
+                android:textStyle="bold"
+                android:layout_alignParentRight="true"
+                />
+
+            <Button
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:id="@+id/proceedbtn"
+                android:text="Proceed"
+                android:layout_alignParentRight="true"
+                android:layout_margin="10dp"
+                android:background="@drawable/button_green"
+                android:layout_below="@id/totalcost"
+                />
+
+            <Button
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Cancel"
+                android:id="@+id/cancelbtn"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_margin="10dp"
+                android:background="@drawable/button_green"
+                android:layout_below="@id/totalcost"
+                android:layout_alignLeft="@id/proceedbtn"
+                />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

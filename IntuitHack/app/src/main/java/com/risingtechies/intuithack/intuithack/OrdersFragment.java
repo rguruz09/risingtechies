@@ -12,7 +12,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by Rekha on 10/22/2016.
@@ -85,7 +88,17 @@ public class OrdersFragment extends ListFragment {
             TextView customerName = (TextView) convertView.findViewById(R.id.customerName);
             customerName.setText(ordersListInfo.getCustomerName());
             TextView date = (TextView) convertView.findViewById(R.id.date);
-            date.setText(ordersListInfo.getOrderDate().toString());
+            TextView time = (TextView) convertView.findViewById(R.id.time);
+            Date oDate = ordersListInfo.getOrderDate();
+            DateFormat dateInstance = SimpleDateFormat.getDateInstance();
+            String date1 = dateInstance.format(oDate);
+            DateFormat timeInstance = SimpleDateFormat.getTimeInstance();
+            String date2 = timeInstance.format(oDate);
+
+            date.setText("Ordered On: " +date1);
+            time.setText("Time: " +date2);
+            TextView price = (TextView)convertView.findViewById(R.id.price);
+            price.setText(String.valueOf("$"+ ordersListInfo.getPrice()));
 
             return convertView;
         }
