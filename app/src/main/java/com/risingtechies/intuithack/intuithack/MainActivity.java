@@ -1,5 +1,6 @@
 package com.risingtechies.intuithack.intuithack;
 
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -82,6 +83,8 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_camera) {
             // Handle the camera action
+            FragmentManager fm = getFragmentManager();
+            fm.beginTransaction().replace(R.id.orders_fragment,new OrdersFragment()).commit();
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
