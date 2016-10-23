@@ -1,7 +1,12 @@
 package com.risingtechies.intuithack.intuithack;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ListFragment;
+import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -13,15 +18,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.squareup.sdk.register.ChargeRequest;
+import com.squareup.sdk.register.RegisterClient;
+import com.squareup.sdk.register.RegisterSdk;
+
+import static com.squareup.sdk.register.CurrencyCode.USD;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+
+import static com.squareup.sdk.register.CurrencyCode.USD;
 
 /**
  * Created by Rekha on 10/22/2016.
@@ -40,6 +54,9 @@ public class SingleOrderDetailFragment extends ListFragment{
     private ArrayList<SingleOrderCartInfo> sod;
     private OrdersListInfo oli;
     double amount = 0;
+    private RegisterClient registerClient;
+    private static final String YOUR_CLIENT_ID = "sq0idp-yeTIZNT_Kk9s8ErUUd1JyA";
+    private int CHARGE_REQUEST_CODE = 1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,6 +71,8 @@ public class SingleOrderDetailFragment extends ListFragment{
         for(SingleOrderCartInfo singleOrderCartInfo:sod){
             amount += singleOrderCartInfo.getTotalCost();
         }
+        CHARGE_REQUEST_CODE = (int)amount*100;
+
 
         CartListAdapter adapter = new CartListAdapter(sod);
         setListAdapter(adapter);
@@ -91,6 +110,14 @@ public class SingleOrderDetailFragment extends ListFragment{
         totalcost.setText(String.valueOf(amount));
 
         ListView lv = (ListView)v.findViewById(android.R.id.list);
+        Button proceedbutton = (Button)v.findViewById(R.id.proceedbtn);
+
+        proceedbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startTransaction();
+            }
+        });
 
 
 
@@ -143,6 +170,12 @@ public class SingleOrderDetailFragment extends ListFragment{
                 convertView = getActivity().getLayoutInflater().inflate(R.layout.cart_list_display, null);
             }
 
+
+            // Replace YOUR_CLIENT_ID with your Square-assigned client application ID,
+            // available from the application dashboard.
+            registerClient = RegisterSdk.createClient(getActivity(), YOUR_CLIENT_ID);
+
+
             SingleOrderCartInfo singleOrderCartInfo = getItem(position);
 
             ImageView cartIcon = (ImageView) convertView.findViewById(R.id.cartIcon);
@@ -191,4 +224,59 @@ public class SingleOrderDetailFragment extends ListFragment{
         }
 
     }
+
+    public void startTransaction() {
+        ChargeRequest request = new ChargeRequest.Builder(CHARGE_REQUEST_CODE, USD).build();
+        try {
+            Intent intent = registerClient.createChargeIntent(request);
+            startActivityForResult(intent, CHARGE_REQUEST_CODE);
+        } catch (ActivityNotFoundException e) {
+            showDialog("Error", "Square Register is not installed", null);
+            registerClient.openRegisterPlayStoreListing();
+        }
+    }
+
+    public void showDialog(String title, String message, DialogInterface.OnClickListener listener) {
+        new AlertDialog.Builder(getActivity())
+                .setTitle(title)
+                .setMessage(message)
+                .setPositiveButton(android.R.string.ok, listener)
+                .show();
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CHARGE_REQUEST_CODE) {
+            if (data == null) {
+                showDialog("Error", "Square Register was uninstalled or crashed", null);
+                return;
+            }
+
+            if (resultCode == Activity.RESULT_OK) {
+                ChargeRequest.Success success = registerClient.parseChargeSuccess(data);
+                String message = "Client transaction id: " + success.clientTransactionId;
+                showDialog("Success!", message, null);
+            } else {
+                ChargeRequest.Error error = registerClient.parseChargeError(data);
+
+                if (error.code == ChargeRequest.ErrorCode.TRANSACTION_ALREADY_IN_PROGRESS) {
+                    String title = "A transaction is already in progress";
+                    String message = "Please complete the current transaction in Register.";
+
+                    showDialog(title, message, new DialogInterface.OnClickListener() {
+                        @Override public void onClick(DialogInterface dialog, int which) {
+                            // Some errors can only be fixed by launching Register
+                            // from the Home screen.
+                            registerClient.launchRegister();
+                        }
+                    });
+                } else {
+                    showDialog("Error: " + error.code, error.debugDescription, null);
+                }
+            }
+        }
+    }
+
 }
