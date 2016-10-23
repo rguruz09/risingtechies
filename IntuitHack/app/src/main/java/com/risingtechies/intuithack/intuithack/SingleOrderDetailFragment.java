@@ -278,11 +278,24 @@ public class SingleOrderDetailFragment extends ListFragment{
 
             if (resultCode == Activity.RESULT_OK) {
                 ChargeRequest.Success success = registerClient.parseChargeSuccess(data);
-                String message = "Client transaction id: " + success.clientTransactionId;
-                showDialog("Success!", message, null);
-                OrdersSingleton.get(getActivity()).removeOrdersListInfo(name);
-                FragmentManager fm = getFragmentManager();
-                fm.beginTransaction().replace(R.id.mainpage_fragment,new OrdersFragment()).commit();
+                String message = "Successful Transaction for ID " + success.clientTransactionId;
+//                showDialog("Success!", message, null);
+//                OrdersSingleton.get(getActivity()).removeOrdersListInfo(name);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setMessage(message)
+                        .setCancelable(false)
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                //do things
+                                OrdersSingleton.get(getActivity()).removeOrdersListInfo(name);
+                                FragmentManager fm = getFragmentManager();
+                               fm.beginTransaction().replace(R.id.mainpage_fragment,new OrdersFragment()).commit();
+                            }
+                        });
+                AlertDialog alert = builder.create();
+                alert.show();
+
 
             } else {
                 ChargeRequest.Error error = registerClient.parseChargeError(data);

@@ -71,9 +71,10 @@ public class OrdersSingleton {
     }
 
     public void removeOrdersListInfo(String name){
-        for(OrdersListInfo od: ordersListInfos){
-            if (od.getCustomerName() == name){
-                ordersListInfos.remove(od);
+        for(int i=0; i<ordersListInfos.size(); i++){
+            if (ordersListInfos.get(i).getCustomerName().equals(name)){
+                ordersListInfos.remove(i);
+                break;
             }
         }
     }
