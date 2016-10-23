@@ -46,14 +46,14 @@ public class OrdersSingleton {
         return ordersListInfos;
     }
 
-  /*  public OrdersListInfo getOrdersListInfo(int position){
-        for(OrdersListInfo rs: ordersListInfos){
-            if (rs.getRefid().equals(refid)){
-                return rs;
+    public OrdersListInfo getOrdersListInfo(int position){
+        for(OrdersListInfo od: ordersListInfos){
+            if (od.getId() == position){
+                return od;
             }
         }
         return null;
-    }*/
+    }
 
 
 }

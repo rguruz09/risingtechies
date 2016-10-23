@@ -31,7 +31,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:id="@+id/date"
         android:layout_toRightOf="@+id/cartIcon"
-        android:layout_alignBottom="@+id/customerName"
+        android:layout_below="@+id/customerName"
         android:textColor="#0983e8" />
 
 

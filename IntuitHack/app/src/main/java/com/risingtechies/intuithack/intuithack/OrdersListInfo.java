@@ -7,12 +7,21 @@ import java.util.Date;
  */
 public class OrdersListInfo {
 
+    private int id;
     private String customerName;
     private Date orderDate;
 
     public OrdersListInfo(String customerName, Date orderDate) {
         this.customerName = customerName;
         this.orderDate = orderDate;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getCustomerName() {
