@@ -40,11 +40,15 @@
       <div class="header clearfix">
 
         <!-- TOPBAR -->
+<!--
         <div class="topBar">
           <div class="container">
             <div class="row">
+-->
+<!--
               <div class="col-md-6 hidden-sm hidden-xs">
                 <ul class="list-inline">
+-->
 <!--
                   <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                   <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -52,8 +56,11 @@
                   <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
                   <li><a href="#"><i class="fa fa-tumblr"></i></a></li>
 -->
+<!--
                 </ul>
               </div>
+-->
+<!--
               <div class="col-md-6 col-xs-12">
                 <ul class="list-inline pull-right">
                   <li><span><a data-toggle="modal" href='#login'>Log in</a><small>or</small><a data-toggle="modal" href='#signup'>Create an account</a></span></li>
@@ -73,6 +80,7 @@
                     <ul class="dropdown-menu dropdown-menu-right">
                       <li>Item(s) in your cart</li>
                       <li>
+-->
 <!--
                         <a href="#">
                           <div class="media">
@@ -83,9 +91,9 @@
                           </div>
                         </a>
 -->
+<!--
                       </li>
                       <li>
-<!--
                         <a href="#">
                           <div class="media">
                             <img class="media-left media-object" src="img/home/cart-items/cart-item-01.jpg" alt="cart-Image">
@@ -95,7 +103,8 @@
                           </div>
                         </a>
 -->
-                      </li>
+<!--
+         </li>
                       <li>
                         <div class="btn-group" role="group" aria-label="...">
                           <button type="button" class="btn btn-default">Shopping Cart</button>
@@ -106,9 +115,12 @@
                   </li>
                 </ul>
               </div>
+-->
+<!--
             </div>
           </div>    
         </div>
+-->
         
         <!-- NAVBAR -->
         <nav class="navbar navbar-main navbar-default" role="navigation">
@@ -121,7 +133,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="\"><img src="img/logo.jpg" alt=""></a>
+              <a class="navbar-brand" href="\"><img src="img/logo.png" alt=""></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -263,8 +275,8 @@
                           </td>
                           <td class="col-xs-4">Turqouise earrings</td>
                           <td class="col-xs-2">$ 45.00</td>
-                          <td class="col-xs-2"><input type="text" placeholder="2"></td>
-                          <td class="col-xs-2">$ 90.00</td>
+                          <td class="col-xs-2"><input type="text" placeholder="1"></td>
+                          <td class="col-xs-2">$ 45.00</td>
                         </tr>
 
 <!--
@@ -294,27 +306,44 @@
                       </tbody>
                     </table>
                   </div>
+<!--
                   <div class="updateArea">
                     <div class="input-group">
-<!--
                       <input type="text" class="form-control" placeholder="I have a discount coupon" aria-describedby="basic-addon2">
                       <a href="#" class="btn input-group-addon" id="basic-addon2">apply coupon</a>
--->
                         
                     </div>
                     <a href="#" class="btn">update cart</a>
                   </div>
-                  <div class="row totalAmountArea">
+-->
+                  <div class="row totalAmountArea hello">
                     <div class="col-sm-4 col-sm-offset-8 col-xs-12">
                       <ul class="list-unstyled">
-                        <li>Sub Total <span>$ 90.00</span></li>
+                        <li>Sub Total <span>$ 45.00</span></li>
                         <li>US Vat <span>$ 12.00</span></li>
-                        <li>Grand Total <span class="grandTotal">$ 102.00</span></li>
+                        <li>Grand Total <span class="grandTotal">$ 57.00</span></li>
                       </ul>
                     </div>
                   </div>
+                    <!-- Trigger/Open The Modal -->
+<!--<button id="myBtn">Open Modal</button>-->
+
+<!-- The Modal -->
+
                   <div class="checkBtnArea">
-                    <a href="checkout-step-1.html" class="btn btn-primary btn-block">checkout<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+                      <input id="mail" type="text" class="form-control" placeholder="Enter Your Name before Checkout" aria-describedby="basic-addon2">
+                    <a id="mybtn" class="unique btn btn-primary btn-block">checkout<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+                     
+                      <div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span id="span" class="close">x</span>
+      <p class="final">Thank You for placing the order.</p>
+      <p class="final1">Please proceed to the counter for payment.</p>
+  </div>
+
+</div>
                   </div>
                 </form>
               </div>
@@ -375,7 +404,7 @@
                 <h5>Get in Touch</h5>
                 <ul class="list-unstyled">
                   <li>Call us at (555)-555-5555</li>
-                  <li><a href="mailto:support@iamabdus.com">support@iamabdus.com</a></li>
+<!--                  <li><a href="mailto:support@iamabdus.com">support@iamabdus.com</a></li>-->
                 </ul>
               </div>
             </div>
@@ -417,6 +446,7 @@
     </div>
     
     <!-- LOGIN MODAL -->
+<!--
     <div class="modal fade" id="login" tabindex="-1" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -446,8 +476,10 @@
         </div>
       </div>
     </div>
+-->
 
     <!-- SIGN UP MODAL -->
+<!--
     <div class="modal fade" id="signup" tabindex="-1" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -475,6 +507,8 @@
         </div>
       </div>
     </div>
+-->
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="plugins/jquery-ui/jquery-ui.js"></script>
@@ -485,6 +519,89 @@
     <script src="plugins/selectbox/jquery.selectbox-0.1.3.min.js"></script>
     <script src="plugins/countdown/jquery.syotimer.js"></script>
     <script src="js/custom.js"></script>
+<script>
+$(document).ready(function(){
+    $('.unique').attr('disabled',true);
+    $('#mail').keyup(function(){
+        if($(this).val().length !=0)
+            $('.unique').attr('disabled', false);            
+        else
+            $('.unique').attr('disabled',true);
+    })
+});
+</script>
+
+<!--
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("mybtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+-->
+
+<script type="text/javascript"> 
+    $(document).ready(function() { 
+    if ($('#mybtn').is(':disabled') == false) { 
+//            $('#StartButton').click(); 
+        var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("mybtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+    } 
+    }); 
+</script>
+<!--
+<script type="text/javascript">
+    $(document).ready(function () {
+        
+       if($("#mybtn").button('disable'));
+        alert($('#testButton').is(':disabled'));
+    });
+</script>
+-->
+
 
   </body>
 </html>

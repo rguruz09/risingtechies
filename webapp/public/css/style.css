@@ -1,46 +1,46 @@
 /* ====== index =====
 1. COMMON
 2. HOME
-	2.1 HEADER
-		2.1.1 TOPBAR
-		2.1.2 NAVBAR
-	2.2 FOOTER
-		2.2.1 MAIN FOOTER
-		2.2.2 COPY RIGHT
-	2.3 BANNER
-	2.4 WHITE SECTION
-	2.5 LIGHT SECTION
-	2.6 LOGIN MODAL
+  2.1 HEADER
+    2.1.1 TOPBAR
+    2.1.2 NAVBAR
+  2.2 FOOTER
+    2.2.1 MAIN FOOTER
+    2.2.2 COPY RIGHT
+  2.3 BANNER
+  2.4 WHITE SECTION
+  2.5 LIGHT SECTION
+  2.6 LOGIN MODAL
 3. FORM
-	3.1 FORM COMMON
-	3.2 FORM SIGN UP
-	3.3 FORM LOST PASSWORD
-	3.4 FORM LOG IN
-	3.5 BLOG SINGLE COMMENTS FORM
-	3.6 STEPS PAGE FORM
+  3.1 FORM COMMON
+  3.2 FORM SIGN UP
+  3.3 FORM LOST PASSWORD
+  3.4 FORM LOG IN
+  3.5 BLOG SINGLE COMMENTS FORM
+  3.6 STEPS PAGE FORM
 4. MODAL
-	4.1 LOGIN MODAL
-	4.2 PORDUCT QUICK VIEW MODAL
+  4.1 LOGIN MODAL
+  4.2 PORDUCT QUICK VIEW MODAL
 5. PAGE HEADER
-	5.1 COMMON HEADER
-	5.2 ABOUT US HEADER
-	5.3 CART PAGE HEADER
+  5.1 COMMON HEADER
+  5.2 ABOUT US HEADER
+  5.3 CART PAGE HEADER
 6. SIDEBARS
 7. PRODUCTS
-	7.1 PRODUCTS COMMON
-	7.2 SINGLE PRODUCTS
-	7.3 CART PRODUCTS
+  7.1 PRODUCTS COMMON
+  7.2 SINGLE PRODUCTS
+  7.3 CART PRODUCTS
 8. GENERIC CONTENT
 9. 404 PAGE
 10. BLOG
-	10.1 BLOG FULL WIDTH
+  10.1 BLOG FULL WIDTH
 11. ABOUT US
 12. STEPS
-	12.1 STEP # 01
-	12.5 STEP # 05
+  12.1 STEP # 01
+  12.5 STEP # 05
 13. USER PROFILE
-	13.1 COMMON PART
-	13.2 PROFILE
+  13.1 COMMON PART
+  13.2 PROFILE
 14. COMMING SOON
 
 ===================== */
@@ -461,7 +461,7 @@ a:hover, a:focus {
 }
 @media (min-width: 768px) {
   .padding-top {
-    padding-top: 91px;
+    padding-top: 10px;
   }
 }
 
@@ -5051,5 +5051,74 @@ ul.social li a.fa:hover { background-color: #333333 }
     font-family: 'Fontawesome';
     float: left;
     margin-right: 10px;
+}
+#mail{
+    width: 250px;
+    margin:auto;
+    margin-bottom: 20px;
+}
+.hello{
+    margin-left: 0px;
+}
+#mybtn{
+    margin: auto;
+    display: block;
+    float: none;
+}
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 800px; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    height: 400px;
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.final{
+    font-size: 20px;
+    padding-top: 5px; 
+    margin-top: 50px;
+    padding-left: 30px;
+}
+.final1{
+    font-size: 20px;
+    padding-top: 5px; 
+    margin-top: 50px;
+    padding-left: 30px;
+}
+#biz{
+    margin-top: auto;
+}
+#mainsec{
+   padding-top: 10px; 
 }
 }
