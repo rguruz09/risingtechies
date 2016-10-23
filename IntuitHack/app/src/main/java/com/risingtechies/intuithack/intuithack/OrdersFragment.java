@@ -31,7 +31,7 @@ public class OrdersFragment extends ListFragment {
 
         OrdersAdapter adapter = new OrdersAdapter(ordersListInfos);
         setListAdapter(adapter);
-        //new UrlActivity().execute(restaurantAttrs);
+        //new UrlActivity().execute(ordersListInfos);
 
     }
 
@@ -103,4 +103,38 @@ public class OrdersFragment extends ListFragment {
             return convertView;
         }
     }
+
+    /*public class UrlActivity extends AsyncTask<Object, Void, Bitmap> {
+        private Exception exception;
+        Bitmap mybitmap;
+        View myview;
+
+        public Bitmap doInBackground(Object... parameters) {
+            myview = (View) parameters[0];
+            try {
+
+                for (int i = 0; i < 2; i++) {
+                    String urlStrng = (String) parameters[1];
+                    URL url = new URL(urlStrng);
+                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                    connection.setDoInput(true);
+                    connection.connect();
+                    InputStream input = connection.getInputStream();
+                    mybitmap = BitmapFactory.decodeStream(input);
+
+                }
+                return mybitmap;
+            } catch (IOException e) {
+                // Log exception
+                this.exception = e;
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap bitmaps) {
+            ImageView restoIcon = (ImageView) myview.findViewById(R.id.restoIcon);
+            restoIcon.setImageBitmap(bitmaps);
+        }
+    }*/
 }

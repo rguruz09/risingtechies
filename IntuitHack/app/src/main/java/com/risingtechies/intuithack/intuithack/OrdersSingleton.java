@@ -18,22 +18,37 @@ public class OrdersSingleton {
         mAppContext = appContext;
         ordersListInfos = new ArrayList<OrdersListInfo>();
 
-        OrdersListInfo order1 = new OrdersListInfo("Rekha", new Date(),123.2);
-        OrdersListInfo order2 = new OrdersListInfo("Sanjeedha", new Date(), 70.0);
-        OrdersListInfo order3 = new OrdersListInfo("Raghu", new Date(), 83.45);
-        OrdersListInfo order4 = new OrdersListInfo("Vinay", new Date(), 120.0);
+        OrdersListInfo order1 = new OrdersListInfo("Raghu Guru", new Date(),57.0);
+        OrdersListInfo order2 = new OrdersListInfo("Sanjeedha Sanofer", new Date(), 70.0);
+        OrdersListInfo order3 = new OrdersListInfo("Rekha Shankar", new Date(), 83.45);
+        OrdersListInfo order4 = new OrdersListInfo("Vinay Hiremath", new Date(), 120.0);
+        OrdersListInfo order5 = new OrdersListInfo("Sharath Nagendra", new Date(), 45.0);
+        OrdersListInfo order6 = new OrdersListInfo("Nikhil Gowda", new Date(), 25.0);
+        OrdersListInfo order7 = new OrdersListInfo("Shiv Karthey", new Date(), 75.0);
+        OrdersListInfo order8 = new OrdersListInfo("Shruthi Navale", new Date(), 75.0);
+        OrdersListInfo order9 = new OrdersListInfo("Swathi Sudarshan", new Date(), 46);
 
         ordersListInfos.add(order1);
         ordersListInfos.add(order2);
         ordersListInfos.add(order3);
         ordersListInfos.add(order4);
+        ordersListInfos.add(order5);
+        ordersListInfos.add(order6);
+        ordersListInfos.add(order7);
+        ordersListInfos.add(order8);
+        ordersListInfos.add(order9);
 
     }
 
-    /*private FavSingleton(Context appContext) {
+    /*private OrdersSingleton(Context appContext) {
         mAppContext = appContext;
-        restaurantAttrs = new ArrayList<RestaurantAttr>();
+        ordersListInfos = new ArrayList<OrdersListInfo>();
     }*/
+
+    public void clearList(){
+        ordersListInfos.clear();
+    }
+
 
     public static OrdersSingleton get(Context c) {
         if (sOrdersSingleton == null) {
@@ -53,6 +68,14 @@ public class OrdersSingleton {
             }
         }
         return null;
+    }
+
+    public void removeOrdersListInfo(String name){
+        for(OrdersListInfo od: ordersListInfos){
+            if (od.getCustomerName() == name){
+                ordersListInfos.remove(od);
+            }
+        }
     }
 
 

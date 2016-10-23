@@ -3,6 +3,7 @@ package com.risingtechies.intuithack.intuithack;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.FragmentManager;
 import android.app.ListFragment;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
@@ -66,6 +67,7 @@ public class SingleOrderDetailFragment extends ListFragment{
     private RegisterClient registerClient;
     private static final String YOUR_CLIENT_ID = "sq0idp-yeTIZNT_Kk9s8ErUUd1JyA";
     private int CHARGE_REQUEST_CODE = 1;
+    private static String name = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -98,7 +100,7 @@ public class SingleOrderDetailFragment extends ListFragment{
             }
         }
 
-
+        name = oli.getCustomerName();
         View v = inflater.inflate(R.layout.single_order_fragment, parent, false);
         socustomername = (TextView)v.findViewById(R.id.socustomername);
         socustomername.setText("Customer: " +oli.getCustomerName());
@@ -278,6 +280,9 @@ public class SingleOrderDetailFragment extends ListFragment{
                 ChargeRequest.Success success = registerClient.parseChargeSuccess(data);
                 String message = "Client transaction id: " + success.clientTransactionId;
                 showDialog("Success!", message, null);
+                OrdersSingleton.get(getActivity()).removeOrdersListInfo(name);
+                FragmentManager fm = getFragmentManager();
+                fm.beginTransaction().replace(R.id.mainpage_fragment,new OrdersFragment()).commit();
 
             } else {
                 ChargeRequest.Error error = registerClient.parseChargeError(data);

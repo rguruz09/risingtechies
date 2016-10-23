@@ -14,11 +14,12 @@ public class SingleOrderCartList {
 
     public SingleOrderCartList() {
         singleOrderCartInfos = new ArrayList<SingleOrderCartInfo>();
-        SingleOrderCartInfo order1 = new SingleOrderCartInfo("Stella Handbag", "http://ecx.images-amazon.com/images/I/91gAnoZPliL._UL1500_.jpg", 2, 120.00, 240.00);
-        SingleOrderCartInfo order2 = new SingleOrderCartInfo("Bracelet", "https://bigskiesjewellery.files.wordpress.com/2013/02/example-of-a-good-jewellery-photo-1.jpg", 1, 34.00, 34.00);
+        SingleOrderCartInfo order1 = new SingleOrderCartInfo("Turquoise Earrings","http://pad2.whstatic.com/images/thumb/f/f1/Make-Personality-Enhancing-Handmade-Accessories-Step-5.jpg/aid1362917-703px-Make-Personality-Enhancing-Handmade-Accessories-Step-5.jpg", 1, 45.00, 57.00);
+        /*SingleOrderCartInfo order2 = new SingleOrderCartInfo("Bracelet", "https://bigskiesjewellery.files.wordpress.com/2013/02/example-of-a-good-jewellery-photo-1.jpg", 1, 34.00, 34.00);
 
         singleOrderCartInfos.add(order1);
-        singleOrderCartInfos.add(order2);
+        /*singleOrderCartInfos.add(order2);*/
+        singleOrderCartInfos.add(order1);
     }
 
     /*private FavSingleton(Context appContext) {

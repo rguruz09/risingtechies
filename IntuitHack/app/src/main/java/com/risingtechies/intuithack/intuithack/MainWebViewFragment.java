@@ -20,7 +20,7 @@ public class MainWebViewFragment extends Fragment{
 
         View wbview = inflater.inflate(R.layout.main_webview_fragment,container,false);
         WebView myWebView = (WebView) wbview.findViewById(R.id.webview);
-        myWebView.loadUrl("http://192.168.239.86:3030");
+        myWebView.loadUrl("http://aasha.mybluemix.net/");
         return wbview;
     }
 
