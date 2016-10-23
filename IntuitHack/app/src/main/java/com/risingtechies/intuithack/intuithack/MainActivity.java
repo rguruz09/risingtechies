@@ -88,7 +88,8 @@ public class MainActivity extends AppCompatActivity
             FragmentManager fm = getFragmentManager();
             fm.beginTransaction().replace(R.id.mainpage_fragment,new OrdersFragment()).commit();
         } else if (id == R.id.nav_gallery) {
-
+            FragmentManager fm = getFragmentManager();
+            fm.beginTransaction().replace(R.id.mainpage_fragment,new AIFragment()).commit();
         } else if (id == R.id.nav_slideshow) {
             finish();
             startActivity(getIntent());
