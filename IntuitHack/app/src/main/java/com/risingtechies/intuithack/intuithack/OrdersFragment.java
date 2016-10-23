@@ -24,7 +24,7 @@ public class OrdersFragment extends ListFragment {
         setHasOptionsMenu(true);
         ordersListInfos = OrdersSingleton.get(getActivity()).getOrdersListInfos();
 
-        RestoAdapter adapter = new RestoAdapter(restaurantAttrs);
+        OrdersAdapter adapter = new OrdersAdapter(ordersListInfos);
         setListAdapter(adapter);
         //new UrlActivity().execute(restaurantAttrs);
 
