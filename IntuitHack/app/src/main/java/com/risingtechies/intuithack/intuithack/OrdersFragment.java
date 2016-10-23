@@ -2,6 +2,7 @@ package com.risingtechies.intuithack.intuithack;
 
 import android.app.Fragment;
 import android.app.ListFragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -38,6 +39,31 @@ public class OrdersFragment extends ListFragment {
         View ordersview = inflater.inflate(R.layout.fragment_orders,container,false);
         ListView lv = (ListView)ordersview.findViewById(android.R.id.list);
         return ordersview;
+    }
+
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+
+        OrdersListInfo od = ((OrdersAdapter)getListAdapter()).getItem(position);
+        int orderid = od.getId();
+        /*Intent i = new Intent(getActivity().getApplicationContext(), SingleOrderDetail.class);
+        i.putExtra(SingleOrderDetailFragment.EXTRA_ID, orderid);
+        startActivity(i);*/
+
+        SingleOrderDetailFragment fragment = new SingleOrderDetailFragment();
+        Bundle args = new Bundle();
+        args.putSerializable(SingleOrderDetailFragment.EXTRA_ID, orderid);
+        fragment.setArguments(args);
+        getFragmentManager().beginTransaction().replace(R.id.mainpage_fragment,fragment).commit();
+
+        /*Fragment detailfrag = new DetailFragment();
+        FragmentManager fm = getFragmentManager();
+        android.app.FragmentTransaction ft=fm.beginTransaction();
+        Bundle args = new Bundle();
+        args.putString("UID", uid.toString());
+        detailfrag.setArguments(args);
+        ft.replace(R.id.search_container, detailfrag);
+        ft.commit();*/
     }
 
 

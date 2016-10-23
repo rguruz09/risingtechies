@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_camera) {
             // Handle the camera action
             FragmentManager fm = getFragmentManager();
-            fm.beginTransaction().replace(R.id.orders_fragment,new OrdersFragment()).commit();
+            fm.beginTransaction().replace(R.id.mainpage_fragment,new OrdersFragment()).commit();
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
